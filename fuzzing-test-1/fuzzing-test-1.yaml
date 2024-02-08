@@ -1,0 +1,18 @@
+rpcUrl: https://rpc.sepolia.org
+
+testMode: property
+seqLen: 2
+workers: 8
+testLimit: 1000000
+
+allContracts: false
+
+sender: ["0x3826539Cbd8d68DCF119e80B994557B4278CeC9f"]
+deployer: "0x3826539Cbd8d68DCF119e80B994557B4278CeC9f"
+psender: "0x3826539Cbd8d68DCF119e80B994557B4278CeC9f"
+
+balanceAddr: 10000000000000000000
+balanceContract: 10000000000000000000
+
+stopOnFail: true
+
