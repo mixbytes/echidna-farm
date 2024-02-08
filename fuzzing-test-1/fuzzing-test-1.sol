@@ -1,7 +1,6 @@
 pragma solidity ^0.8.0;
 
-// codestyle like Echidna logo included :)
-// import "./HEVM.sol";
+// codestyle like Echidna logo :)
 
 interface IWETH {
     receive() external payable;
