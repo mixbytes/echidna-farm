@@ -1,0 +1,22 @@
+#rpcUrl: https://rpc.sepolia.org
+rpcUrl: https://free-eth-node.com/api/eth
+rpcBlock: 19191720
+
+
+testMode: property
+seqLen: 1
+workers: 8
+testLimit: 1000000
+
+allContracts: false
+filterFunctions: ["dirty_univ3_swap()"]
+
+sender: ["0x1000000"]
+deployer: "0x1000000"
+psender: "0x1000000"
+
+balanceAddr: 10000000000000000000
+balanceContract: 10000000000000000000
+
+stopOnFail: true
+
