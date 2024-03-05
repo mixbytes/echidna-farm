@@ -19,12 +19,27 @@ describe("UniV3 swap test", function () {
 
   });
 
-  describe("swap", function () {
-    it("Should swap", async function () {
-      await fuzzingTest2.univ3_fuzzing_test({ value: ethers.utils.parseUnits("100", "ether") });
-      //await fuzzingTest2.univ3_swap({ value: ethers.utils.parseUnits("1", "ether") });
+  describe("swaps", function () {
+    it("swap60", async function () {
+      await fuzzingTest2.univ3_fuzzing_test(60, { value: ethers.utils.parseUnits("100", "ether") });
     });
 
-  });
+    it("swap120", async function () {
+      await fuzzingTest2.univ3_fuzzing_test(120, { value: ethers.utils.parseUnits("100", "ether") });
+    });
+
+    it("swap180", async function () {
+      await fuzzingTest2.univ3_fuzzing_test(180, { value: ethers.utils.parseUnits("100", "ether") });
+    });
+
+    it("swap240", async function () {
+      await fuzzingTest2.univ3_fuzzing_test(240, { value: ethers.utils.parseUnits("100", "ether") });
+    });
+
+    it("swap300", async function () {
+      await fuzzingTest2.univ3_fuzzing_test(300, { value: ethers.utils.parseUnits("100", "ether") });
+    });
 
 });
+});
+

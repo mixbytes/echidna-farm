@@ -1,22 +1,28 @@
-#rpcUrl: https://rpc.sepolia.org
-rpcUrl: https://free-eth-node.com/api/eth
+# rpcUrl: https://rpc.sepolia.org
+# rpcUrl: https://free-eth-node.com/api/eth
+rpcUrl: https://rpc.flashbots.net/
 rpcBlock: 19191720
 
 
-testMode: property
+testMode: "optimization"
 seqLen: 1
-workers: 8
+workers: 15
 testLimit: 1000000
 
+#mutConsts: [60, 60, 60, 60]
+#shrinkLimit: 1000
+
 allContracts: false
-filterFunctions: ["dirty_univ3_swap()"]
+filterFunctions: ["univ3_fuzzing_test(uint24)"]
 
 sender: ["0x1000000"]
 deployer: "0x1000000"
 psender: "0x1000000"
 
-balanceAddr: 10000000000000000000
-balanceContract: 10000000000000000000
+balanceAddr: 100000000000000000000
+maxValue: 100000000000000000000
+balanceContract: 100000000000000000000
+cryticArgs: ['--solc-remaps', '@=node_modules/@']
 
 stopOnFail: true
 
