@@ -21,7 +21,7 @@ contract FuzzingTest1 {
     uint256 lastWETHReceived = 0;
 
     constructor() payable {}
-
+    
     // user sends 100 ETH, we swap them to WETH ans send him back
     // if some "secret" value is provided as parameter, we take 2% fee
     function dirty_swap_eth_to_weth(uint256 secret) payable public {
@@ -34,19 +34,34 @@ contract FuzzingTest1 {
 
         // if (secret > 10000000000000000 && secret <= 10000000000000001) {  // (CASE 1)
         // if (secret > 1000000000000 && secret % 2839283100122 == 0) {      // (CASE 2)
-        if (secret > 100000000 && secret**9 % 10 == 0) {        // (CASE 3)
-            
-        // if (secret > 10000000000000000 && secret <= 10000000000000001) {  // (CASE 1)
+        // if (secret > 100000000 && secret**9 % 10 == 0) {                  // (CASE 3)
+        // if (sqrt(secret) == 42) {                                         // (CASE 4)
+        if (secret > 10000000000000000 && secret <= 10000000000000001) {  // (CASE 1)
             fee = msg.value * 2 / 100; // calculate 2% fee
         }
         
         uint256 swap_amount = msg.value - fee;
         
+        // all block can be replace with
+        // lastWETHReceived = msg.value - fee;
         IWETH(WETH).deposit{ value: swap_amount }();
         require(IWETH(WETH).transfer(msg.sender, swap_amount));
         lastWETHReceived = IWETH(WETH).balanceOf(msg.sender) - initialWETHbalance;
     }
     
+    function sqrt(uint y) internal pure returns (uint z) {
+        if (y > 3) {
+            z = y;
+            uint x = (y / 2 + 1);
+            while (x < z) {
+                z = x;
+                x = (y / x + x) / 2;
+            }
+        } else if (y != 0) {
+            z = 1;
+        }
+    }
+ 
     // invariant checking that exact ETH amout sent was transferred to user as WETH
     function echidna_secret_fee_not_taken() public view returns (bool) {
         return lastETHDeposit == lastWETHReceived;

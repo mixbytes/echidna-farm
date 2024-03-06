@@ -1,12 +1,13 @@
 rpcUrl: https://rpc.sepolia.org
 
 testMode: property
-seqLen: 2
-workers: 8
+seqLen: 1
+workers: 15
 testLimit: 1000000
 
 allContracts: false
 
+# some random addresses
 sender: ["0x3826539Cbd8d68DCF119e80B994557B4278CeC9f"]
 deployer: "0x3826539Cbd8d68DCF119e80B994557B4278CeC9f"
 psender: "0x3826539Cbd8d68DCF119e80B994557B4278CeC9f"
